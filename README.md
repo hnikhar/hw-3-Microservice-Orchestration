@@ -88,6 +88,8 @@
   - Go back to your code editor and navigate to the sa-frontend/src/App.js file.
   - Replace the localhost URL with the IP and PORT you copied earlier.
   - Your analyzeSentence() method should look something like this:
+  - <img width="728" alt="" src="https://github.com/hnikhar/hw-3-Microservice-Orchestration/assets/25585734/58191722-2808-4df7-b30b-48ed1325b0d8">
+
 8. Rebuild the Frontend: Since we made a change to the code, build it again using: `npm i`
   - `npm run build`
   - Build the docker image for frontend: `docker build -t hnikhar/sentiment-analysis-frontend:latest .`
