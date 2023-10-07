@@ -14,7 +14,7 @@
    - Navigate to the "sa-webapp" directory using the command: `cd sa-webapp`
    - Install Maven to generate the "target" folder: `mvn install`
    - Go into the newly created "target" folder: `cd target`
-   - Start the java application: `java -jar sentiment-analysis-web-0.0.1-SNAPSHOT.jar --sa.logic.api.url=http://localhost:5000`
+   - Start the java application: `java -jar sentiment-analysis-web-0.0.1-SNAPSHOT.jar --sa.logic.api.url=http://localhost:5000 `
 7. Goto Terminal-2, sa-logic:
    - Ensure that Python3 is installed on your computer.
    - Next, navigate to the "sa-logic/sa" directory: `cd sa-logic/sa`
