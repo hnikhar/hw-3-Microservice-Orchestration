@@ -1,6 +1,6 @@
 # hw-3-Microservice-Orchestration
 
-## Steps to Run it on local
+## Steps to Run it on Locally
 
 1. Begin by installing Docker Desktop and launching it on your MacBook.
  - Ensure that no containers are currently active, as this will prevent any ports from being in use by existing containers.
@@ -34,4 +34,43 @@
    - Install the required npm packages: npm i
    - Build the application. This will create a "build" folder: npm run build
    - Start the application: npm start
+
+## Build and Push to DockerHub
+
+1. Open Terminal-1, sa-webapp:
+   - Make sure you are in the sa-webapp folder, or else do: cd ..
+   - Run the following command for build: docker build -t hnikhar/sentiment-analysis-webapp:latest .
+   - Run the following command for push: docker push hnikhar/sentiment-analysis-webapp:latest
+2. Repeat the same commands. Open Terminal-2, sa-logic:
+   - Make sure you are in the sa-logic folder, or else do: cd ..
+   - Run the following command for build: docker build -t hnikhar/sentiment-analysis-logic:latest .
+   - Run the following command for push: docker push hnikhar/sentiment-analysis-logic:latest
+3. Repeat the same commands. Open Terminal-3, sa-frontend:
+   - Run the following command for build: docker build -t hnikhar/sentiment-analysis-frontend:latest .
+   - Run the following command for push: docker push hnikhar/sentiment-analysis-frontend:latest
+
+## Kubernetes on Cloud
+
+# Google Cloud Setup:
+1. Log in to console.cloud.google.com.
+2. Turn on Billing Account.
+3. Navigate to Google Kubernetes Engine.
+4. Create a cluster (switch to Standard).
+5. Give it an appropriate name.
+6. Select a Region and click "Create." Wait for about 5 minutes.
+7. Once the cluster is created, click on the three dots and select "Connect."
+8. Copy the command mentioned in the window to connect to the cluster.
+
+# Cloud Terminal Setup:
+1. Open Cloud Terminal.
+2. Paste the cluster connect command copied earlier.
+3. Pull the web app and logic Docker images:
+  - docker pull hnikhar/sentiment-analysis-webapp:latest
+  - docker pull hnikhar/sentiment-analysis-logic:latest
+4. Tag these images:
+  - docker tag hnikhar/sentiment-analysis-webapp:latest gcr.io/vertical-shore-398902/hnikhar/sentiment-analysis-webapp:latest
+  - docker tag hnikhar/sentiment-analysis-logic:latest gcr.io/vertical-shore-398902/hnikhar/sentiment-analysis-logic:latest
+5. Push these tagged images to Google Cloud Registry:
+  - docker push gcr.io/vertical-shore-398902/hnikhar/sentiment-analysis-webapp:latest
+  - docker push gcr.io/vertical-shore-398902/hnikhar/sentiment-analysis-logic:latest
 
