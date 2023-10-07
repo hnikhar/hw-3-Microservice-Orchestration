@@ -76,4 +76,27 @@
 5. Push these tagged images to Google Cloud Registry:
   - `docker push gcr.io/vertical-shore-398902/hnikhar/sentiment-analysis-webapp:latest`
   - `docker push gcr.io/vertical-shore-398902/hnikhar/sentiment-analysis-logic:latest`
+6. Kubernetes Deployment:
+  - Use VIM Editor to paste the deployment.yml and service.yaml files to spin up the logic and web apps. Update the GCR image under the containers block in the deployment YAMLs.
+  - Apply these YAMLs using kubectl commands:
+    - `kubectl apply -f sa-webapp-deployment.yml`
+    - `kubectl apply -f sa-webapp-service.yml`
+    - `kubectl apply -f sa-logic-deployment.yml`
+    - `kubectl apply -f sa-logic-service.yml`
+  - Wait for a couple of minutes for the services to spin up.
+7. Update the Frontend Code:
+  - Go back to your code editor and navigate to the sa-frontend/src/App.js file.
+  - Replace the localhost URL with the IP and PORT you copied earlier.
+  - Your analyzeSentence() method should look something like this:
+8. Rebuild the Frontend: Since we made a change to the code, build it again using: `npm i`
+  - `npm run build`
+  - Build the docker image for frontend: `docker build -t hnikhar/sentiment-analysis-frontend:latest .`
+  - Push the docker image: `docker push hnikhar/sentiment-analysis-frontend:latest`
+  - Pull the docker image of frontend: `docker pull hnikhar/sentiment-analysis-frontend:latest`
+  - Tag the image: `docker tag hnikhar/sentiment-analysis-frontend:latest gcr.io/vertical-shore-398902/hnikhar/sentiment-analysis-frontend:latest`
+  - Push the image: `docker push gcr.io/vertical-shore-398902/hnikhar/sentiment-analysis-frontend:latest`
+  - Wait for a couple of minutes for the service to spin up.
+9. Access the Web App:Click on the IP address associated with the frontend load balancer. This should bring up a window with your Sentiment Analyzer.
+
+##  The End!
 
